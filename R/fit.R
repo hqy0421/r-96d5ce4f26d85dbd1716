@@ -221,7 +221,11 @@ fit_linear_model <- function(object, formula, ...) {
     data = object,
     ...
   ) |>
-    broom::tidy() |>
+    tidy_glm_coefs()
+}
+
+tidy_glm_coefs <- function(model) {
+  broom::tidy(model) |>
     dplyr::select(
       term,
       estimate

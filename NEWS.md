@@ -1,5 +1,15 @@
 # infer (development version)
 
+* Added `scenario_replenish()` for scenario-driven replenishment across
+  multiple SKUs. It aligns SKU histories by period, draws joint bootstrap
+  scenarios with period indices shared across SKUs, fits each SKU in each
+  scenario with the Gaussian engine used by `fit()`, predicts demand from
+  each SKU's future features (truncating negative predictions at zero),
+  and globally minimizes the empirical CVaR of stockout plus holding loss
+  over integer order quantities under per-SKU capacities and a total
+  budget. The CVaR retains the fractional weight of scenarios at the tail
+  boundary rather than using a top-`ceil()` average.
+
 # infer 1.1.0
 
 * Fixed bug where adding `shade_confidence_interval(NULL)` or `shade_p_value(NULL)` 

@@ -47,6 +47,7 @@ reference:
   - gss
   - deprecated
   - rep_sample_n
+  - scenario_replenish
   - "`%>%`"
   - print.infer
 
